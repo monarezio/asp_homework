@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const bundleFileName = 'bundle';
-const dirName = 'wwwroot/dist';
+const dirName = 'dist/';
 
 module.exports = (env, argv) => {
     return {
@@ -44,7 +44,7 @@ module.exports = (env, argv) => {
                             presets: ['@babel/preset-env']
                         }
                     }
-                }
+                },
             ]
         },
         plugins: [

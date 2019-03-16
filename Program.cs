@@ -19,6 +19,7 @@ namespace asp_homework
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseWebRoot(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "dist"))
                 .UseStartup<Startup>();
     }
 }
