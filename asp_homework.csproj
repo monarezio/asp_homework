@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
   </ItemGroup>
 
 
@@ -48,6 +49,12 @@
     <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
     <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
     <_ContentIncludedByDefault Remove="wwwroot\src\resources\favicon.ico" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Models\Data\Repositories" />
+    <Folder Include="Models\Domain\Services" />
   </ItemGroup>
 
 </Project>
