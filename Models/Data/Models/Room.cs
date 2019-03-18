@@ -37,7 +37,23 @@ namespace asp_homework.Models.Data.Models
         /// <summary>
         /// Linked reservation
         /// </summary>
-        public IList<Reservation> Reservation { get; set; }
+        public IList<Reservation> Reservations { get; set; }
 
+        public Room()
+        {
+        }
+
+        public Room(string name, byte from, byte to, string description, IList<Reservation> reservations)
+        {
+            Name = name;
+            Description = description;
+            From = from;
+            To = to;
+            Reservations = reservations;
+        }
+
+        public Room(string name, byte from, byte to, string description = null) : this(name, from, to, description, new List<Reservation>())
+        {
+        }
     }
 }

@@ -35,5 +35,19 @@ namespace asp_homework.Models.Data.Models
 
         [ForeignKey("Reservation")]
         public int RoomId { get; set; }
+
+        public Reservation()
+        {
+        }
+
+        public Reservation(string firstName, string lastName, string email, string phoneNumber, DateTime date, string description = null)
+        {
+            Date = date;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Description = description;
+        }
     }
 }
