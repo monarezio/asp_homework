@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asp_homework", "asp_homework\asp_homework.csproj", "{58052028-5249-4478-B1B8-E6A21AA5D5F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asp_homework_tests", "asp_homework_tests\asp_homework_tests.csproj", "{5775D7F4-0492-4F02-A903-FE4D354FF51B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58052028-5249-4478-B1B8-E6A21AA5D5F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58052028-5249-4478-B1B8-E6A21AA5D5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58052028-5249-4478-B1B8-E6A21AA5D5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58052028-5249-4478-B1B8-E6A21AA5D5F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5775D7F4-0492-4F02-A903-FE4D354FF51B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5775D7F4-0492-4F02-A903-FE4D354FF51B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5775D7F4-0492-4F02-A903-FE4D354FF51B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5775D7F4-0492-4F02-A903-FE4D354FF51B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
