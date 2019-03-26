@@ -9,8 +9,8 @@ using asp_homework.Models.Data;
 namespace asp_homework.Migrations
 {
     [DbContext(typeof(ReservationDbContext))]
-    [Migration("20190318082422_mock_data")]
-    partial class mock_data
+    [Migration("20190326145027_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace asp_homework.Migrations
                 .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("asp_homework.Models.Data.Models.Reservation", b =>
+            modelBuilder.Entity("asp_homework_gui.Models.Data.Models.Reservation", b =>
                 {
                     b.Property<int>("ReservationId")
                         .ValueGeneratedOnAdd();
@@ -56,7 +56,7 @@ namespace asp_homework.Migrations
                         new
                         {
                             ReservationId = 1,
-                            Date = new DateTime(2019, 3, 18, 9, 24, 21, 981, DateTimeKind.Local).AddTicks(8650),
+                            Date = new DateTime(2019, 1, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "josef.novy@email.cz",
                             FirstName = "Josef",
                             LastName = "Nový",
@@ -66,16 +66,36 @@ namespace asp_homework.Migrations
                         new
                         {
                             ReservationId = 2,
-                            Date = new DateTime(2019, 3, 18, 9, 24, 21, 989, DateTimeKind.Local).AddTicks(2450),
+                            Date = new DateTime(2019, 1, 1, 11, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "karel.stary@email.cz",
                             FirstName = "Karel",
                             LastName = "Starý",
                             PhoneNumber = "+420 602 968 359",
                             RoomId = 1
+                        },
+                        new
+                        {
+                            ReservationId = 3,
+                            Date = new DateTime(2019, 1, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "jindrich.novotny@email.cz",
+                            FirstName = "Jindřich",
+                            LastName = "Novotný",
+                            PhoneNumber = "+420 724 013 313",
+                            RoomId = 2
+                        },
+                        new
+                        {
+                            ReservationId = 4,
+                            Date = new DateTime(2019, 1, 1, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "david.capka@email.cz",
+                            FirstName = "David",
+                            LastName = "Čapka",
+                            PhoneNumber = "+420 724 676 776",
+                            RoomId = 2
                         });
                 });
 
-            modelBuilder.Entity("asp_homework.Models.Data.Models.Room", b =>
+            modelBuilder.Entity("asp_homework_gui.Models.Data.Models.Room", b =>
                 {
                     b.Property<int>("RoomId")
                         .ValueGeneratedOnAdd();
@@ -100,15 +120,30 @@ namespace asp_homework.Migrations
                         {
                             RoomId = 1,
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.",
-                            From = (byte)10,
+                            From = (byte)9,
                             Name = "Alchemist's Chamber",
-                            To = (byte)12
+                            To = (byte)18
+                        },
+                        new
+                        {
+                            RoomId = 2,
+                            Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.",
+                            From = (byte)8,
+                            Name = "Path to Eternity",
+                            To = (byte)20
+                        },
+                        new
+                        {
+                            RoomId = 3,
+                            From = (byte)8,
+                            Name = "Legacy of Ancestors",
+                            To = (byte)19
                         });
                 });
 
-            modelBuilder.Entity("asp_homework.Models.Data.Models.Reservation", b =>
+            modelBuilder.Entity("asp_homework_gui.Models.Data.Models.Reservation", b =>
                 {
-                    b.HasOne("asp_homework.Models.Data.Models.Room")
+                    b.HasOne("asp_homework_gui.Models.Data.Models.Room")
                         .WithMany("Reservations")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade);

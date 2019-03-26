@@ -14,24 +14,26 @@ namespace asp_homework.Models.Data
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-
-            //Database.EnsureCreated();
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
+            SetupIndexes(modelBuilder);
+            FillDb(modelBuilder);
+        }
 
+        private void SetupIndexes(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Reservation>()
                 .HasIndex(i => new
                 {
                     i.RoomId, i.Date
                 }) //TODO: Think about the adding a DateFrom and DateTo, which would all be unique and therefor save me some validations
-                .IsUnique();
+                .IsUnique();            
+        }
 
+        private void FillDb(ModelBuilder modelBuilder)
+        {
             Room room = new Room("Alchemist's Chamber", 9, 18,
                 "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.")
             {
@@ -50,6 +52,8 @@ namespace asp_homework.Models.Data
             };
 
             modelBuilder.Entity<Room>().HasData(room);
+            modelBuilder.Entity<Room>().HasData(room2);
+            modelBuilder.Entity<Room>().HasData(room3);
 
             Reservation res1 = new Reservation(
                 "Josef",

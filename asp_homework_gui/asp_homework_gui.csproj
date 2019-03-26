@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <RootNamespace>asp_homework</RootNamespace>
   </PropertyGroup>
 
 
@@ -53,7 +54,7 @@
 
 
   <ItemGroup>
-    <Folder Include="Models\Data\Repositories" />
+    <Folder Include="Migrations" />
     <Folder Include="Models\Domain\Services" />
   </ItemGroup>
 

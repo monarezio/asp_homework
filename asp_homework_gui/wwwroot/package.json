@@ -1,5 +1,5 @@
 {
-  "name": "asp_homework",
+  "name": "asp_homework_gui",
   "version": "1.0.0",
   "description": "My ASP homework...",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/monarezio/asp_homework.git"
+    "url": "git+https://github.com/monarezio/asp_homework_gui.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/monarezio/asp_homework/issues"
+    "url": "https://github.com/monarezio/asp_homework_gui/issues"
   },
-  "homepage": "https://github.com/monarezio/asp_homework#readme",
+  "homepage": "https://github.com/monarezio/asp_homework_gui#readme",
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",

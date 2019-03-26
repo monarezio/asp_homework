@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using asp_homework.Models.Data.Models.HelperModels;
 
 namespace asp_homework.Models.Data.Models
 {
@@ -38,6 +39,12 @@ namespace asp_homework.Models.Data.Models
         /// Linked reservation
         /// </summary>
         public IList<Reservation> Reservations { get; set; }
+        
+        /// <summary>
+        /// Represents the time range
+        /// </summary>
+        [NotMapped]
+        public TimeRange TimeRange => new TimeRange(From, To);
 
         public Room()
         {
