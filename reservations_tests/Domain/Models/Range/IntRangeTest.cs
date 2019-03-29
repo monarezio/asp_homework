@@ -1,9 +1,8 @@
-using reservations_domain.Models.Range;
 using reservations_domain.Services.Factories.RangeFactory;
 using reservation_domain.Models.Range;
 using Xunit;
 
-namespace reservations_tests.Models.Range
+namespace reservations_tests.Domain.Models.Range
 {
     public class IntRangeTest: IClassFixture<Context>
     {

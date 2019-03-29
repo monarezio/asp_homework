@@ -3,7 +3,7 @@ using reservations_domain.Models.Range.Exceptions;
 using reservations_domain.Services.Factories.RangeFactory;
 using Xunit;
 
-namespace reservations_tests.Models.Range
+namespace reservations_tests.Domain.Models.Range
 {
     public class RangeFactoryTest: IClassFixture<Context>
     {
