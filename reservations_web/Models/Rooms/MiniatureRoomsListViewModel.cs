@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using reservations_web.Models.Room;
 
 namespace reservations_web.Models.Rooms
 {
@@ -14,5 +13,7 @@ namespace reservations_web.Models.Rooms
         {
             Rooms = rooms;
         }
+        
+        
     }
 }

@@ -8,7 +8,9 @@ namespace reservations_data
         public ReservationDbContext CreateDbContext(string[] args)
         {
             DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder<ReservationDbContext>()
-                .UseMySql("Server=localhost;Database=asp_reservations;User=root;Password=;");
+                .UseMySql(
+                    $"Server={MySqlCredentials.Host};Database={MySqlCredentials.Database};User={MySqlCredentials.Username};Password={MySqlCredentials.Password};"
+                );
 
             return new ReservationDbContext(optionsBuilder.Options);
         }

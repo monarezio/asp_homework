@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -45,6 +46,14 @@ module.exports = (env, argv) => {
                         }
                     }
                 },
+                {
+                    test: /\.(jpe?g|png|gif)$/i,
+                    loader:"file-loader",
+                    options:{
+                        name:'[name].[ext]',
+                        outputPath:'assets/images/'
+                    }
+                }
             ]
         },
         plugins: [

@@ -1,17 +1,32 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - Reservation System</title>
-    <link rel="stylesheet" href="~/bundle.css" />
-    
-    <link rel="icon" 
+    <link rel="stylesheet" href="~/bundle.css"/>
+
+    <link rel="icon"
           href="~/resources/favicon.ico">
 </head>
 <body>
-    <header></header>
-    @RenderBody()
-    <script src="~/bundle.js" asp-append-version="true"></script>
+<div id="body">
+    <header>
+        
+    </header>
+    <main class="custom-container">
+        <h2>@ViewBag.Title</h2>
+        <section>
+            @RenderBody()
+        </section>
+    </main>
+    <footer>
+        <div>
+            &copy; Samuel Kodytek 2019
+        </div>
+    </footer>
+</div>
+
+<script src="~/bundle.js" asp-append-version="true"></script>
 </body>
 </html>

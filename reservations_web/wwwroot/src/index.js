@@ -1,8 +1,9 @@
-import $ from "jquery";
-import popper from "popper.js";
-import jquery_validation from "jquery-validation";
-import jquery_validation_unobtrusive from "jquery-validation-unobtrusive";
+const $ = require("jquery");
+require('jquery-ui/ui/widgets/datepicker');
+require("popper.js");
+require("jquery-validation");
+require("jquery-validation-unobtrusive");
 
-document.onload = () => {
-    console.log("Hello!")  
-};
+$(document).ready(() => {
+   $(".datepicker").datepicker({ dateFormat: 'dd.mm.yy' }); 
+});

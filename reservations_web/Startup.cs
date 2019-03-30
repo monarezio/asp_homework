@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using reservations_data;
+using reservations_data.Repositories.Reservations;
+using reservations_data.Repositories.Rooms;
+using reservations_web.Models.Rooms.Factories;
 
 namespace reservations_web
 {
@@ -23,16 +26,16 @@ namespace reservations_web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-            
-            IDesignTimeDbContextFactory<ReservationDbContext> contextFactory = new ReservationDbContextFactory(); //TODO: Is this correct?
-            services.AddDbContext<ReservationDbContext>(options => contextFactory.CreateDbContext(new string[0]));
-            
+            services.AddDbContextPool<ReservationDbContext>(
+                options => options.UseMySql(
+                    $"Server={MySqlCredentials.Host};Database={MySqlCredentials.Database};User={MySqlCredentials.Username};Password={MySqlCredentials.Password};"
+                )
+            );
+
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddSingleton<IRoomsViewModelFactory, RoomsViewModelFactory>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -52,13 +55,12 @@ namespace reservations_web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Rooms}/{action=Index}/{id?}");
+                    template: "{controller=Room}/{action=Index}/{id?}");
             });
         }
     }

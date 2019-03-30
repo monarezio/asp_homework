@@ -1,7 +1,66 @@
 @import 'variables';
 @import 'reset';
+
+@import "~jquery-ui/themes/base/datepicker.css";
+@import "~jquery-ui/themes/base/theme.css";
+
 @import '~bootstrap/scss/bootstrap.scss';
 
 body {
+  
+}
+
+footer {
+  border-top: 1px solid darken(white, 10%);
+  padding: 10px 15px;
+
+  div {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 12px;
+    color: darken(white, 65%)
+  }
+}
+
+#body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex-grow: 1;
+  }
+}
+
+.custom-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  
+  .card {
+    margin-bottom: 6px;
+  }
+}
+
+.room-miniature {
+  width: 18rem;
+  display: inline-block;
+}
+
+.radio-group {
+  
+  input[type=radio] {
+    display: none;
+
+    &+label {
+      cursor: pointer;
+      width: 125px;
+    }
+    
+    &:checked+label {
+      background-color: darken($light, 10%);
+    }
+  }
   
 }

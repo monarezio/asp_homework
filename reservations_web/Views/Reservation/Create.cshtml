@@ -1,0 +1,36 @@
+@using reservations_domain.Models.Range
+@model reservations_web.Models.Rooms.RoomViewModel
+
+@{
+    ViewBag.Title = $"Booking for room: {@Model.Name}";
+    Layout = "_Layout";
+}
+
+<p>Room description: @Model.Description</p>
+<form class="row">
+    <div class="col-sm">
+        <div>
+            <label>Date</label>
+            <input class="datepicker" type="text"/>
+        </div>
+    </div>
+    <div class="col-sm">
+        <h3>Hour:</h3>
+        <div class="radio-group">
+            @foreach (IntRange range in Model.Hours)
+            {
+                <input id="@range.From" name="time" type="radio" value="@range.From"/> 
+                <label for="@range.From" class="btn btn-light">@range.From:00 - @range.To:00</label>
+            }
+        </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-sm">
+        <a asp-controller="Room" asp-action="Index" class="btn btn-warning text-light">Back</a>
+    </div>
+    <div class="col-sm text-right">
+        <input class="btn btn-primary"type="submit" value="Next"/>
+    </div>
+</form>
+
+

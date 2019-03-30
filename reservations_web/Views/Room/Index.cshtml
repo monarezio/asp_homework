@@ -1,0 +1,12 @@
+@using reservations_web.Models.Rooms
+@model reservations_web.Models.Rooms.MiniatureRoomsListViewModel
+
+@{
+    ViewBag.Title = "Rooms";
+    Layout = "_Layout";
+}
+
+@foreach (MiniatureRoomViewModel roomViewModel in Model.Rooms)
+{
+    Html.RenderPartial("RoomMiniature", roomViewModel);
+}
