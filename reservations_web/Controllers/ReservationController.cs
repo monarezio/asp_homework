@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using reservations_data.Models;
 using reservations_data.Repositories.Rooms;
+using reservations_web.Models.Reservation;
 using reservations_web.Models.Rooms;
 using reservations_web.Models.Rooms.Factories;
 
@@ -19,10 +20,15 @@ namespace reservations_web.Controllers
             _roomsViewModelFactory = roomsViewModelFactory;
         }
 
-        public IActionResult Create(int id)
+        public IActionResult Prepare(int id)
         {
             RoomViewModel room = _roomsViewModelFactory.CreateRoomViewModel(_roomRepository.GetRoom(id));
             return View(room);
+        }
+
+        public IActionResult Create(int id, [FromQuery] ReservationPreparationViewModel reservationPreperation)
+        {
+            return View(reservationPreperation);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using reservations_domain.Models.Common.Extensions;
 using reservations_domain.Models.Range;
 
 namespace reservations_web.Models.Rooms
@@ -9,18 +10,18 @@ namespace reservations_web.Models.Rooms
         public int RoomId { get; }
         public string Name { get; }
         public string Description { get; }
-        public IList<IntRange> Hours { get; } = new List<IntRange>();
+        public IList<TimeRange> Hours { get; } = new List<TimeRange>();
 
-        public RoomViewModel(int roomId, string name, string description, IntRange openingHours)
+        public RoomViewModel(int roomId, string name, string description, TimeRange openingHours)
         {
             RoomId = roomId;
             Name = name;
             Description = description;
 
-            int count = openingHours.To - openingHours.From;
+            int count = openingHours.To.Hours - openingHours.From.Hours;
             for (int i = 0; i < count; i++)
             {
-                Hours.Add(new IntRange(openingHours.From + i, openingHours.From + i + 1));
+                Hours.Add(new TimeRange(openingHours.From.AddHours(i), openingHours.From.AddHours(i + 1)));
             }
         }
     }

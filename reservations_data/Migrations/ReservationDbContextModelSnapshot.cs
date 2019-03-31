@@ -108,15 +108,13 @@ namespace reservations_data.Migrations
                         .IsRequired()
                         .HasMaxLength(500);
 
-                    b.Property<int>("From")
-                        .HasMaxLength(2);
+                    b.Property<TimeSpan>("From");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<int>("To")
-                        .HasMaxLength(2);
+                    b.Property<TimeSpan>("To");
 
                     b.HasKey("RoomId");
 
@@ -127,25 +125,25 @@ namespace reservations_data.Migrations
                         {
                             RoomId = 1,
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.",
-                            From = 9,
+                            From = new TimeSpan(0, 9, 0, 0, 0),
                             Name = "Alchemist's Chamber",
-                            To = 18
+                            To = new TimeSpan(0, 20, 0, 0, 0)
                         },
                         new
                         {
                             RoomId = 2,
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.",
-                            From = 8,
+                            From = new TimeSpan(0, 8, 0, 0, 0),
                             Name = "Path to Eternity",
-                            To = 20
+                            To = new TimeSpan(0, 20, 0, 0, 0)
                         },
                         new
                         {
                             RoomId = 3,
                             Description = "Lorem Ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.",
-                            From = 8,
+                            From = new TimeSpan(0, 12, 0, 0, 0),
                             Name = "Legacy of Ancestors",
-                            To = 19
+                            To = new TimeSpan(0, 18, 0, 0, 0)
                         });
                 });
 

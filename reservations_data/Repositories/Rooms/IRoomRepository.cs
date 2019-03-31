@@ -11,5 +11,7 @@ namespace reservations_data.Repositories.Rooms
         Room GetRoom(int id);
 
         Room GetRoomWithReservations(int id, DateTime day);
+
+        IList<Room> GetAllRoomsWithReservation(DateTime day);
     }
 }

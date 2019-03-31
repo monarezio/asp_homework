@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using reservations_data.Common.Extensions;
+using Microsoft.EntityFrameworkCore;
 using reservations_data.Models;
 
 namespace reservations_data.Repositories.Rooms
@@ -27,11 +27,49 @@ namespace reservations_data.Repositories.Rooms
 
         public Room GetRoomWithReservations(int id, DateTime day)
         {
-            var query = from room in _dbContext.Rooms
-                join reservation in _dbContext.Reservations on room.RoomId equals reservation.RoomId
-                where room.RoomId == id && reservation.To.Date.Equals(day.Date)
-                select room; //TODO: Find a better way?  
-            return query.First();
+            return _dbContext.Rooms //TODO: Optimization
+                .Include("Reservations")
+                .Where(i => i.RoomId == id)
+                .Select(i =>
+                    new
+                    {
+                        Room = i,
+                        Reservations = i.Reservations.Where(r => r.From.Date == day.Date)
+                    }
+                ).Select(i =>
+                    new Room
+                    {
+                        RoomId = i.Room.RoomId,
+                        Description = i.Room.Description,
+                        From = i.Room.From,
+                        To = i.Room.To,
+                        Name = i.Room.Name,
+                        Reservations = i.Reservations.ToList()
+                    }
+                ).FirstOrDefault();
+        }
+
+        public IList<Room> GetAllRoomsWithReservation(DateTime day)
+        {
+            return _dbContext.Rooms //TODO: Optimization
+                .Include("Reservations")
+                .Select(i =>
+                    new
+                    {
+                        Room = i,
+                        Reservations = i.Reservations.Where(r => r.From.Date == day.Date)
+                    }
+                ).Select(i =>
+                    new Room
+                    {
+                        RoomId = i.Room.RoomId,
+                        Description = i.Room.Description,
+                        From = i.Room.From,
+                        To = i.Room.To,
+                        Name = i.Room.Name,
+                        Reservations = i.Reservations.ToList()
+                    }
+                ).ToList();
         }
     }
 }

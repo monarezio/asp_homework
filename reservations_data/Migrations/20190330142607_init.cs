@@ -16,8 +16,8 @@ namespace reservations_data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Description = table.Column<string>(maxLength: 500, nullable: false),
-                    From = table.Column<int>(maxLength: 2, nullable: false),
-                    To = table.Column<int>(maxLength: 2, nullable: false)
+                    From = table.Column<TimeSpan>(nullable: false),
+                    To = table.Column<TimeSpan>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,17 +53,17 @@ namespace reservations_data.Migrations
             migrationBuilder.InsertData(
                 table: "Rooms",
                 columns: new[] { "RoomId", "Description", "From", "Name", "To" },
-                values: new object[] { 1, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.", 9, "Alchemist's Chamber", 18 });
+                values: new object[] { 1, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.", new TimeSpan(0, 9, 0, 0, 0), "Alchemist's Chamber", new TimeSpan(0, 20, 0, 0, 0) });
 
             migrationBuilder.InsertData(
                 table: "Rooms",
                 columns: new[] { "RoomId", "Description", "From", "Name", "To" },
-                values: new object[] { 2, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.", 8, "Path to Eternity", 20 });
+                values: new object[] { 2, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.", new TimeSpan(0, 8, 0, 0, 0), "Path to Eternity", new TimeSpan(0, 20, 0, 0, 0) });
 
             migrationBuilder.InsertData(
                 table: "Rooms",
                 columns: new[] { "RoomId", "Description", "From", "Name", "To" },
-                values: new object[] { 3, "Lorem Ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.", 8, "Legacy of Ancestors", 19 });
+                values: new object[] { 3, "Lorem Ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante.", new TimeSpan(0, 12, 0, 0, 0), "Legacy of Ancestors", new TimeSpan(0, 18, 0, 0, 0) });
 
             migrationBuilder.InsertData(
                 table: "Reservations",

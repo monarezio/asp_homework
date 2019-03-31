@@ -1,36 +1,34 @@
-@using reservations_domain.Models.Range
-@model reservations_web.Models.Rooms.RoomViewModel
+@model reservations_web.Models.Reservation.ReservationPreparationViewModel  
 
 @{
-    ViewBag.Title = $"Booking for room: {@Model.Name}";
+    ViewBag.Title = "Customer details";
     Layout = "_Layout";
 }
 
-<p>Room description: @Model.Description</p>
-<form class="row">
-    <div class="col-sm">
-        <div>
-            <label>Date</label>
-            <input class="datepicker" type="text"/>
-        </div>
+Booking room: NAME on @Model.Date.ToString("M/d/yy") @Model.From.ToString("h\\:m")
+
+<form>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control"/>
     </div>
-    <div class="col-sm">
-        <h3>Hour:</h3>
-        <div class="radio-group">
-            @foreach (IntRange range in Model.Hours)
-            {
-                <input id="@range.From" name="time" type="radio" value="@range.From"/> 
-                <label for="@range.From" class="btn btn-light">@range.From:00 - @range.To:00</label>
-            }
-        </div>
+    <div class="form-group">
+        <label>First name</label>
+        <input type="text" class="form-control"/>
     </div>
-    <div class="w-100"></div>
-    <div class="col-sm">
-        <a asp-controller="Room" asp-action="Index" class="btn btn-warning text-light">Back</a>
+    <div class="form-group">
+        <label>Last name</label>
+        <input type="text" class="form-control"/>
     </div>
-    <div class="col-sm text-right">
-        <input class="btn btn-primary"type="submit" value="Next"/>
+    <div class="form-group">
+        <label>Phone</label>
+        <input type="text" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Note</label>
+        <textarea class="form-control" rows="3"></textarea>
+    </div>
+    <div class="text-right">
+        <input type="submit" value="Create booking" class="btn btn-primary"/>
     </div>
 </form>
-
-

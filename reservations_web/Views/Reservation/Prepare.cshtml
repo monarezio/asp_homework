@@ -1,0 +1,45 @@
+@using reservations_domain.Models.Range
+@model reservations_web.Models.Rooms.RoomViewModel
+
+@{
+    ViewBag.Title = $"Booking for room: {@Model.Name}";
+    Layout = "_Layout";
+}
+
+<p>Room description: @Model.Description</p>
+<form class="row">
+    <div class="col-sm">
+        <div class="form-group row">
+            <div id="room-id">@Model.RoomId</div>
+            <label for="datepicker" class="col-sm-2 col-form-label">Date</label>
+            <div class="col-sm-10">
+                <input id="datepicker" class="datepicker form-control" type="text" name="date"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm">
+        <h3>Hour:</h3>
+        <div class="radio-group">
+            @foreach (TimeRange range in Model.Hours)
+            {
+                <input id="@range.From.Hours" name="range" type="radio" value="@range.From"/> 
+                <label for="@range.From.Hours" class="btn btn-light">@range.From.ToString(@"h\:mm") - @range.To.ToString(@"h\:mm")</label>
+            }
+        </div>
+        <h4 class="invalid-date text-center">
+            Please choose a valid date.
+        </h4>
+        <h4 class="no-reservation text-center">
+            No reservation available for this date.
+        </h4>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-sm">
+        <a asp-controller="Room" asp-action="Index" class="btn btn-warning text-light">Back</a>
+    </div>
+    <div class="col-sm text-right">
+        <input class="btn btn-primary"type="submit" value="Next"/>
+    </div>
+</form>
+
+

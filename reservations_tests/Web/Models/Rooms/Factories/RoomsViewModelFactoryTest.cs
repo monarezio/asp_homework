@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using reservations_data.Models;
 using reservations_web.Models.Rooms;
@@ -15,8 +16,8 @@ namespace reservations_tests.Web.Models.Rooms.Factories
             RoomId = 1,
             Name = "Test 1",
             Description = "Lorem Ipsum",
-            From = 10,
-            To = 12,
+            From = new TimeSpan(10, 0, 0),
+            To = new TimeSpan(12, 0, 0),
         };
 
         private readonly Room _roomViewModel2 = new Room
@@ -24,8 +25,8 @@ namespace reservations_tests.Web.Models.Rooms.Factories
             RoomId = 2,
             Name = "Test 2",
             Description = "You are a wizard harry.",
-            From = 8,
-            To = 20,
+            From = new TimeSpan(8, 0, 0),
+            To = new TimeSpan(20, 0, 0),
         };
 
         [Fact]

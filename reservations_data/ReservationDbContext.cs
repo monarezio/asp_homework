@@ -39,8 +39,8 @@ namespace reservations_data
             {
                 RoomId = 1,
                 Name = "Alchemist's Chamber",
-                From = 9,
-                To = 18,
+                From = new TimeSpan(9, 0, 0),
+                To = new TimeSpan(20, 0, 0),
                 Description =
                     "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante."
             };
@@ -49,8 +49,8 @@ namespace reservations_data
             {
                 RoomId = 2,
                 Name = "Path to Eternity",
-                From = 8,
-                To = 20,
+                From = new TimeSpan(8, 0, 0),
+                To = new TimeSpan(20, 0, 0),
                 Description =
                     "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante."
             };
@@ -59,8 +59,8 @@ namespace reservations_data
             {
                 RoomId = 3,
                 Name = "Legacy of Ancestors",
-                From = 8,
-                To = 19,
+                From = new TimeSpan(12, 0, 0),
+                To = new TimeSpan(18, 0, 0),
                 Description =
                     "Lorem Ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus ac leo pretium faucibus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Pellentesque pretium lectus id turpis. Nullam faucibus mi quis velit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus. Nam quis nulla. Phasellus faucibus molestie nisl. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante."
             };

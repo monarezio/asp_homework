@@ -55,7 +55,7 @@ footer {
 
     &+label {
       cursor: pointer;
-      width: 125px;
+      width: 130px;
     }
     
     &:checked+label {
@@ -63,4 +63,8 @@ footer {
     }
   }
   
+}
+
+#room-id {
+  display: none;
 }

@@ -63,6 +63,7 @@
       <Folder Include="Views\Partials" />
       <Folder Include="wwwroot" />
       <Folder Include="wwwroot\dist" />
+      <Folder Include="wwwroot\src\js" />
     </ItemGroup>
 
 </Project>

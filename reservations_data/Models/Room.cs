@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,13 +21,11 @@ namespace reservations_data.Models
         [Required]
         public string Description { get; set; }
 
-        [MaxLength(2)]
         [Required]
-        public int From { get; set; }
+        public TimeSpan From { get; set; }
 
-        [MaxLength(2)]
         [Required]
-        public int To { get; set; }
+        public TimeSpan To { get; set; }
 
         public IList<Reservation> Reservations { get; set; }
 
