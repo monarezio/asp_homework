@@ -8,7 +8,5 @@ namespace reservations_web.Models.Rooms.Factories
         MiniatureRoomViewModel CreateMiniatureRoomViewModel(Room room);
 
         MiniatureRoomsListViewModel CreateMiniatureRoomsListViewModel(IList<Room> room);
-
-        RoomViewModel CreateRoomViewModel(Room room);
     }
 }

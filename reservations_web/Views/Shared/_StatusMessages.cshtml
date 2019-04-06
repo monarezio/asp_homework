@@ -1,0 +1,12 @@
+@using reservations_web.Models.Messages
+@inject IMessagesService MessagesService
+
+<div class="mt-3">
+    @foreach (Message message in @MessagesService.Messages)
+    {
+        <div class="alert-dismissible alert @message.StyleClass">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @message.Body
+        </div>
+    }
+</div>

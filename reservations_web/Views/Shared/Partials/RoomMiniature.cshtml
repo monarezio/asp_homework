@@ -1,0 +1,20 @@
+@model reservations_web.Models.Rooms.MiniatureRoomViewModel
+
+<div class="card room-miniature">
+    @if (@Model.Description.Length > 200)
+    {
+    <div class="card-body" data-toggle="tooltip" title="@Model.Description">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.ShortenedDescription</p>
+        <a asp-controller="Reservation" asp-action="Prepare" asp-route-id="@Model.RoomId">Book now!</a>
+    </div>
+    }
+    else
+    {
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="card-text">@Model.ShortenedDescription</p>
+            <a asp-controller="Reservation" asp-action="Prepare" asp-route-id="@Model.RoomId">Book now!</a>
+        </div>    
+    }
+</div>

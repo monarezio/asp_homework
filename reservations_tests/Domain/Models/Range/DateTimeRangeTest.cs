@@ -1,5 +1,5 @@
 using System;
-using reservations_domain.Services.Factories.RangeFactory;
+using reservations_domain.Models.Range;
 using reservation_domain.Models.Range;
 using Xunit;
 
@@ -15,19 +15,18 @@ namespace reservations_tests.Domain.Models.Range
         
         public DateTimeRangeTest(Context context)
         {
-            IRangeFactory rangeFactory = context.RangeFactory;
 
-            _dateRange1 = rangeFactory.CreateDateTimeRange(
+            _dateRange1 = new DateTimeRange(
                 new DateTime(2000, 1, 1),
                 new DateTime(2000, 12, 12)
             );
 
-            _dateRange2 = rangeFactory.CreateDateTimeRange(
+            _dateRange2 = new DateTimeRange(
                 new DateTime(1999, 1, 1),
                 new DateTime(2001, 12, 12)
             );
             
-            _dateRange3 = rangeFactory.CreateDateTimeRange(
+            _dateRange3 = new DateTimeRange(
                 DateTime.Today, 
                 DateTime.Now
             );

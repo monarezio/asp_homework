@@ -22,10 +22,5 @@ namespace reservations_web.Models.Rooms.Factories
                 room.Select(r => CreateMiniatureRoomViewModel(r)).ToList()
             );
         }
-
-        public RoomViewModel CreateRoomViewModel(Room room)
-        {
-            return new RoomViewModel(room.RoomId, room.Name, room.Description, room.GetOpeningHours());
-        }
     }
 }

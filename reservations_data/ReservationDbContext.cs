@@ -22,7 +22,6 @@ namespace reservations_data
             FillDb(modelBuilder);
         }
 
-        //TODO: Put the private methods into a helper class?
         private void SetupIndexes(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Reservation>()
@@ -74,7 +73,7 @@ namespace reservations_data
             {
                 ReservationId = 1,
                 RoomId = room.RoomId,
-                FristName = "Josef",
+                FirstName = "Josef",
                 LastName = "Nový",
                 Email = "josef.novy@email.cz",
                 PhoneNumber = "+420 724 393 339",
@@ -87,7 +86,7 @@ namespace reservations_data
             {
                 ReservationId = 2,
                 RoomId = room.RoomId,
-                FristName = "Karel",
+                FirstName = "Karel",
                 LastName = "Satrý",
                 Email = "karel.stary@email.cz",
                 PhoneNumber = "+420 602 968 359",
@@ -100,7 +99,7 @@ namespace reservations_data
             {
                 ReservationId = 3,
                 RoomId = room2.RoomId,
-                FristName = "Jindřich",
+                FirstName = "Jindřich",
                 LastName = "Novotný",
                 Email = "jindrich.novotny@email.cz",
                 PhoneNumber = "+420 724 013 313",
@@ -114,7 +113,7 @@ namespace reservations_data
                 {
                     ReservationId = 4,
                     RoomId = room2.RoomId,
-                    FristName = "David",
+                    FirstName = "David",
                     LastName = "Čapka",
                     Email = "david.capka@email.cz",
                     PhoneNumber = "+420 724 676 776",

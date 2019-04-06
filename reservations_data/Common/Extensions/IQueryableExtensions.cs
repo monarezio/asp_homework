@@ -7,7 +7,8 @@ using Microsoft.EntityFrameworkCore.Storage;
 namespace reservations_data.Common.Extensions
 {
     /// <summary>
-    /// https://stackoverflow.com/questions/37527783/get-sql-code-from-an-ef-core-query
+    /// Used for purely debugging purposes
+    /// Creds: https://stackoverflow.com/questions/37527783/get-sql-code-from-an-ef-core-query
     /// </summary>
     public static class IQueryableExtensions
     {

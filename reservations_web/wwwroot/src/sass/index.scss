@@ -40,12 +40,18 @@ footer {
   
   .card {
     margin-bottom: 6px;
+    margin-right: 3px;
   }
 }
 
 .room-miniature {
   width: 18rem;
   display: inline-block;
+  float: left;
+  
+  .card-body {
+    height: 286px;
+  }
 }
 
 .radio-group {
@@ -67,4 +73,8 @@ footer {
 
 #room-id {
   display: none;
+}
+
+.tooltip-inner {
+  min-width: 350px;
 }

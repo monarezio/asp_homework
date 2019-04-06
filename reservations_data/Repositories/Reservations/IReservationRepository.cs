@@ -13,5 +13,7 @@ namespace reservations_data.Repositories.Reservations
 
         Reservation GetReservation(int reservationId);
 
+        void Add(Reservation reservation);
+
     }
 }

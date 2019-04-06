@@ -32,7 +32,7 @@ namespace reservations_data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     From = table.Column<DateTime>(nullable: false),
                     To = table.Column<DateTime>(nullable: false),
-                    FristName = table.Column<string>(maxLength: 50, nullable: false),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     Email = table.Column<string>(nullable: false),
                     PhoneNumber = table.Column<string>(nullable: false),
@@ -67,7 +67,7 @@ namespace reservations_data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Reservations",
-                columns: new[] { "ReservationId", "Description", "Email", "FristName", "From", "LastName", "PhoneNumber", "RoomId", "To" },
+                columns: new[] { "ReservationId", "Description", "Email", "FirstName", "From", "LastName", "PhoneNumber", "RoomId", "To" },
                 values: new object[,]
                 {
                     { 1, null, "josef.novy@email.cz", "Josef", new DateTime(2019, 1, 1, 10, 0, 0, 0, DateTimeKind.Unspecified), "Nový", "+420 724 393 339", 1, new DateTime(2019, 1, 1, 11, 0, 0, 0, DateTimeKind.Unspecified) },

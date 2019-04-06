@@ -9,6 +9,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     </ItemGroup>
 
 
@@ -60,10 +61,8 @@
 
 
     <ItemGroup>
-      <Folder Include="Views\Partials" />
       <Folder Include="wwwroot" />
       <Folder Include="wwwroot\dist" />
-      <Folder Include="wwwroot\src\js" />
     </ItemGroup>
 
 </Project>

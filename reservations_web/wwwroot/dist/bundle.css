@@ -8782,11 +8782,15 @@ footer {
   width: 100%;
   margin: 0 auto; }
   .custom-container .card {
-    margin-bottom: 6px; }
+    margin-bottom: 6px;
+    margin-right: 3px; }
 
 .room-miniature {
   width: 18rem;
-  display: inline-block; }
+  display: inline-block;
+  float: left; }
+  .room-miniature .card-body {
+    height: 286px; }
 
 .radio-group input[type=radio] {
   display: none; }
@@ -8798,4 +8802,7 @@ footer {
 
 #room-id {
   display: none; }
+
+.tooltip-inner {
+  min-width: 350px; }
 

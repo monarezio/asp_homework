@@ -1,13 +1,14 @@
 @using reservations_domain.Models.Range
-@model reservations_web.Models.Rooms.RoomViewModel
+@using reservations_domain.Models.Range.Extensions
+@model reservations_data.Models.Reservation
 
 @{
-    ViewBag.Title = $"Booking for room: {@Model.Name}";
+    ViewBag.Title = $"Booking for room: {@Model.Room.Name}";
     Layout = "_Layout";
 }
 
-<p>Room description: @Model.Description</p>
-<form class="row">
+<p>Room description: @Model.Room.Description</p>
+<div class="row" id="preparation">
     <div class="col-sm">
         <div class="form-group row">
             <div id="room-id">@Model.RoomId</div>
@@ -20,9 +21,9 @@
     <div class="col-sm">
         <h3>Hour:</h3>
         <div class="radio-group">
-            @foreach (TimeRange range in Model.Hours)
+            @foreach (TimeRange range in Model.Room.GetOpeningHoursAsList())
             {
-                <input id="@range.From.Hours" name="range" type="radio" value="@range.From"/> 
+                <input id="@range.From.Hours" name="time-range" type="radio" value="@range.From"/> 
                 <label for="@range.From.Hours" class="btn btn-light">@range.From.ToString(@"h\:mm") - @range.To.ToString(@"h\:mm")</label>
             }
         </div>
@@ -37,9 +38,13 @@
     <div class="col-sm">
         <a asp-controller="Room" asp-action="Index" class="btn btn-warning text-light">Back</a>
     </div>
+    <form asp-action="Create" asp-route-id="@Model.RoomId" method="get">
+    <input id="input-from" class="hide" type="hidden" asp-for="From"/>
+    <input id="input-to" class="hide" type="hidden" asp-for="To"/>
     <div class="col-sm text-right">
-        <input class="btn btn-primary"type="submit" value="Next"/>
+        <input id="next-button" class="btn btn-primary" type="submit" value="Next"/>
     </div>
-</form>
+    </form>
+</div>
 
 

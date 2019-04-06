@@ -9,7 +9,7 @@ using reservations_data;
 namespace reservations_data.Migrations
 {
     [DbContext(typeof(ReservationDbContext))]
-    [Migration("20190330142607_init")]
+    [Migration("20190404184324_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,7 @@ namespace reservations_data.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<string>("FristName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(50);
 
@@ -59,7 +59,7 @@ namespace reservations_data.Migrations
                         {
                             ReservationId = 1,
                             Email = "josef.novy@email.cz",
-                            FristName = "Josef",
+                            FirstName = "Josef",
                             From = new DateTime(2019, 1, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Nový",
                             PhoneNumber = "+420 724 393 339",
@@ -70,7 +70,7 @@ namespace reservations_data.Migrations
                         {
                             ReservationId = 2,
                             Email = "karel.stary@email.cz",
-                            FristName = "Karel",
+                            FirstName = "Karel",
                             From = new DateTime(2019, 1, 1, 11, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Satrý",
                             PhoneNumber = "+420 602 968 359",
@@ -81,7 +81,7 @@ namespace reservations_data.Migrations
                         {
                             ReservationId = 3,
                             Email = "jindrich.novotny@email.cz",
-                            FristName = "Jindřich",
+                            FirstName = "Jindřich",
                             From = new DateTime(2019, 1, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Novotný",
                             PhoneNumber = "+420 724 013 313",
@@ -92,7 +92,7 @@ namespace reservations_data.Migrations
                         {
                             ReservationId = 4,
                             Email = "david.capka@email.cz",
-                            FristName = "David",
+                            FirstName = "David",
                             From = new DateTime(2019, 1, 1, 11, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Čapka",
                             PhoneNumber = "+420 724 676 776",
@@ -151,7 +151,7 @@ namespace reservations_data.Migrations
 
             modelBuilder.Entity("reservations_data.Models.Reservation", b =>
                 {
-                    b.HasOne("reservations_data.Models.Room")
+                    b.HasOne("reservations_data.Models.Room", "Room")
                         .WithMany("Reservations")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade);

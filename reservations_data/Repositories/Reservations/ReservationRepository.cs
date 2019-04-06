@@ -32,5 +32,11 @@ namespace reservations_data.Repositories.Reservations
         {
             return _context.Reservations.First(i => i.ReservationId == reservationId);
         }
+
+        public void Add(Reservation reservation)
+        {
+            _context.Reservations.Add(reservation);
+            _context.SaveChanges();
+        }
     }
 }

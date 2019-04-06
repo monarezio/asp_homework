@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using reservations_data.Models.Attributes;
 
 namespace reservations_data.Models
 {
@@ -22,7 +23,7 @@ namespace reservations_data.Models
         [MaxLength(50)]
         [MinLength(1)]
         [Required]
-        public string FristName { get; set; }
+        public string FirstName { get; set; }
 
         [MaxLength(50)]
         [MinLength(1)]
@@ -30,6 +31,7 @@ namespace reservations_data.Models
         public string LastName { get; set; }
 
         [Required]
+        [ClientEmail]
         public string Email { get; set; }
 
         [Required]
@@ -38,7 +40,9 @@ namespace reservations_data.Models
         [MaxLength(500)]
         public string Description { get; set; }
 
-        [ForeignKey("Reservation")]
+        [Required]
         public int RoomId { get; set; }
+
+        public Room Room { get; set; }
     }
 }

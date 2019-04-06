@@ -22,7 +22,7 @@ namespace reservations_data.Repositories.Rooms
 
         public Room GetRoom(int id)
         {
-            return _dbContext.Rooms.First(r => r.RoomId == id);
+            return _dbContext.Rooms.FirstOrDefault(r => r.RoomId == id);
         }
 
         public Room GetRoomWithReservations(int id, DateTime day)
