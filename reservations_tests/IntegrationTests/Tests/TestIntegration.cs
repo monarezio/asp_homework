@@ -30,7 +30,7 @@ namespace reservations_tests.IntegrationTests.Tests
             //Please don't force me to actually validate the json...
             string responseString = response.Content.ReadAsStringAsync().Result;
  
-            foreach (Room room in TestDbInitializer.GetTestRooms())
+            foreach (Room room in TestDbInitializer.GetTestRooms()) //I am just checking if all the rooms are shown, therefor I don't have to check the reservations, which at the point being are null... 
             {
                 Assert.Contains(room.Name, responseString);
             }

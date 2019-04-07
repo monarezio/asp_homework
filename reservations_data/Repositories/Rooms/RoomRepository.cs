@@ -27,49 +27,39 @@ namespace reservations_data.Repositories.Rooms
 
         public Room GetRoomWithReservations(int id, DateTime day)
         {
-            return _dbContext.Rooms //TODO: Optimization
-                .Include("Reservations")
-                .Where(i => i.RoomId == id)
-                .Select(i =>
-                    new
-                    {
-                        Room = i,
-                        Reservations = i.Reservations.Where(r => r.From.Date == day.Date)
-                    }
-                ).Select(i =>
-                    new Room
-                    {
-                        RoomId = i.Room.RoomId,
-                        Description = i.Room.Description,
-                        From = i.Room.From,
-                        To = i.Room.To,
-                        Name = i.Room.Name,
-                        Reservations = i.Reservations.ToList()
-                    }
-                ).FirstOrDefault();
+            var room = _dbContext.Rooms.FirstOrDefault(i => i.RoomId == id);
+
+            if (room == null)
+                return null;
+
+            var reservations = _dbContext.Reservations.Where(i => i.From.Day == day.Day && i.RoomId == room.RoomId).ToList();
+            reservations.ForEach(i => i.Room = null);
+            
+            room.Reservations = reservations;
+
+            return room;
         }
 
         public IList<Room> GetAllRoomsWithReservation(DateTime day)
         {
-            return _dbContext.Rooms //TODO: Optimization
-                .Include("Reservations")
-                .Select(i =>
-                    new
-                    {
-                        Room = i,
-                        Reservations = i.Reservations.Where(r => r.From.Date == day.Date)
-                    }
-                ).Select(i =>
-                    new Room
-                    {
-                        RoomId = i.Room.RoomId,
-                        Description = i.Room.Description,
-                        From = i.Room.From,
-                        To = i.Room.To,
-                        Name = i.Room.Name,
-                        Reservations = i.Reservations.ToList()
-                    }
-                ).ToList();
+            var rooms = _dbContext.Rooms.ToList();
+
+            var roomsIds = rooms.Select(i => i.RoomId);
+
+            var reservations = _dbContext.Reservations.Where(i => i.From.Date == day.Date && roomsIds.Contains(i.RoomId)).ToList();
+            reservations.ForEach(i => i.Room = null);
+
+            rooms = rooms.Select(i => new Room
+            {
+                RoomId = i.RoomId,
+                Description = i.Description,
+                From = i.From,
+                Name = i.Name,
+                To = i.To,
+                Reservations = reservations.Where(j => j.RoomId == i.RoomId).ToList()
+            }).ToList();
+
+            return rooms;
         }
     }
 }

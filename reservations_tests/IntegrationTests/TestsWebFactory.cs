@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -63,8 +64,8 @@ namespace reservations_tests.IntegrationTests
  
                     try
                     {
-                        // Seed the database with test data.
-                        TestDbInitializer.Initialize(db);
+                        // Add the actual data to "container", which is accessible everywhere.
+                        TestDbInitializer.Initialize(db.Rooms.ToList());
                     }
                     catch (Exception ex)
                     {
