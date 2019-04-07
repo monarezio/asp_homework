@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@ using reservations_data;
 using reservations_data.Repositories.Reservations;
 using reservations_data.Repositories.Rooms;
 using reservations_domain.Services.Reservations;
+using reservations_web.Binders;
 using reservations_web.Models.Messages;
 using reservations_web.Models.Rooms.Factories;
 
@@ -35,7 +37,7 @@ namespace reservations_web
                     $"Server={MySqlCredentials.Host};Database={MySqlCredentials.Database};User={MySqlCredentials.Username};Password={MySqlCredentials.Password};"
                 )
             );
-            
+
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IRoomRepository, RoomRepository>();
@@ -44,13 +46,13 @@ namespace reservations_web
             services.AddSingleton<IRoomsViewModelFactory, RoomsViewModelFactory>();
             services.AddScoped<IMessagesService, MessagesService>();
 
-            services.AddMvc()
+            services.AddMvc(options => { options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider()); })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddSessionStateTempDataProvider();
-            
+
             services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
             services.AddSession();
-            
+
             services.AddDistributedMemoryCache();
         }
 

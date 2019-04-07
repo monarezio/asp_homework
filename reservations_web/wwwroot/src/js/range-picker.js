@@ -1,6 +1,6 @@
 const $ = require("jquery");
 require('jquery-ui/ui/widgets/datepicker');
-// TODO: REDO THIS SHIT ITS UGLY FUCKING JS
+
 $(document).ready(() => {
     const datepicker = $("#preparation .datepicker");
     if (datepicker.length > 0) {
@@ -66,7 +66,8 @@ function toggleTimes(date) {
     let splitDate = val.split(".");
 
     let isoFormat = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
-
+    
+    ///ISO Format is universal, therefor I don't have to worry about the localization
     $.get(`/api/rooms/${roomId}`, {date: isoFormat}, (data) => {
         data.reservations.forEach((i) => {
             let date = new Date(i.from);

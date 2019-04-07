@@ -5,13 +5,13 @@
     Layout = "_Layout";
 }
 
-Booking room: @Model.Room.Name on @Model.From.ToString("M.d.yyyy") @Model.From.ToString("HH\\:mm") - @Model.To.ToString("HH\\:mm")
+Booking room: @Model.Room.Name on @Model.From.ToString("d.M.yyyy") @Model.From.ToString("HH\\:mm") - @Model.To.ToString("HH\\:mm")
 
 <form method="post" asp-action="Create">
     <div class="form-group hide">
         <input asp-for="RoomId" type="hidden" value="@Model.Room.RoomId"/>
-        <input asp-for="From" type="hidden" value="@Model.From"/>
-        <input asp-for="To" type="hidden" value="@Model.To"/>
+        <input asp-for="From" type="hidden" value="@Model.From.ToString("yyyy-MM-dd HH\\:mm")"/>
+        <input asp-for="To" type="hidden" value="@Model.To.ToString("yyyy-MM-dd HH\\:mm")"/>
     </div>
     <div class="form-group">
         <label asp-for="Email">Email</label>

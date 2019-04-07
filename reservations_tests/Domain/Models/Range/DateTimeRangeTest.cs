@@ -38,6 +38,8 @@ namespace reservations_tests.Domain.Models.Range
             Assert.True(_dateRange1.CollidesWith(_dateRange2));    
             Assert.True(_dateRange1.CollidesWith(_dateRange1));    
             Assert.True(_dateRange2.CollidesWith(_dateRange1));    
+            
+            Assert.True(_dateRange1.IsIn(_dateRange2));
         }
 
         [Fact]
@@ -47,6 +49,9 @@ namespace reservations_tests.Domain.Models.Range
             Assert.False(_dateRange2.CollidesWith(_dateRange3));
             Assert.False(_dateRange3.CollidesWith(_dateRange2));
             Assert.False(_dateRange3.CollidesWith(_dateRange1));
+            
+            Assert.False(_dateRange2.IsIn(_dateRange1));
+            Assert.False(_dateRange3.IsIn(_dateRange2));
         }
     }
 }

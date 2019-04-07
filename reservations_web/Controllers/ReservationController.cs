@@ -9,17 +9,12 @@ namespace reservations_web.Controllers
 {
     public class ReservationController : Controller
     {
-        private readonly IRoomRepository _roomRepository;
-        private readonly IReservationRepository _reservationRepository;
         private IMessagesService _messageService;
         private IReservationsService _reservationService;
 
         // GET
-        public ReservationController(IRoomRepository roomRepository, IReservationRepository reservationRepository,
-            IMessagesService messagesService, IReservationsService reservationsService)
+        public ReservationController(IMessagesService messagesService, IReservationsService reservationsService)
         {
-            _roomRepository = roomRepository;
-            _reservationRepository = reservationRepository;
             _messageService = messagesService;
             _reservationService = reservationsService;
         }
@@ -36,20 +31,20 @@ namespace reservations_web.Controllers
 
         [HttpGet]
         public IActionResult Create(int id, [FromQuery] Reservation reservation)
-        { 
-            //Since the default (of timespan) values are the same, they can never be different
-            if (!_reservationService.HasValidRange(reservation))
-            {
-                _messageService.AddMessage(new Message("Invalid time range."));
-                return RedirectToAction("Prepare", reservation);
-            }
-
+        {
             reservation.RoomId = id;
             reservation = _reservationService.IncludeRoom(reservation);
             if (reservation.Room == null)
             {
                 _messageService.AddMessage(new Message("The room was not found."));
                 return RedirectToAction("Index", "Room");
+            }
+            
+            //Since the default (of timespan) values are the same, they can never be different
+            if (!_reservationService.HasValidRange(reservation))
+            {
+                _messageService.AddMessage(new Message("Invalid time range."));
+                return RedirectToAction("Prepare", reservation);
             }
 
             return View(reservation);
@@ -58,9 +53,9 @@ namespace reservations_web.Controllers
         [HttpPost]
         public IActionResult Create([FromForm] Reservation reservation)
         {
+            reservation = _reservationService.IncludeRoom(reservation);
             if (!ModelState.IsValid)
             {
-                reservation = _reservationService.IncludeRoom(reservation);
                 if (reservation.Room == null)
                 {
                     _messageService.AddMessage(new Message("The room was not found."));
@@ -68,6 +63,12 @@ namespace reservations_web.Controllers
                 }
 
                 return View(reservation);
+            }
+
+            if (!_reservationService.HasValidRange(reservation))
+            {
+                _messageService.AddMessage(new Message("Invalid time range."));
+                return RedirectToAction("Index", "Room"); //user is trying to break the app, does not really matter where I redirect him...
             }
 
             try

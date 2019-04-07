@@ -11,5 +11,9 @@ namespace reservations_domain.Models.Range
         public TimeRange(TimeSpan from, TimeSpan to) : base(from, to) 
         {
         }
+
+        public TimeRange(Range<DateTime> range) : base(range.From.TimeOfDay, range.To.TimeOfDay)
+        {
+        }
     }
 }
